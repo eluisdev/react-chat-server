@@ -14,7 +14,7 @@ type TypeMessage = {
     channelId ?: Types.ObjectId
 }
 
-const setupSocket = (server : Server) => { //TODO: Revisar codigo
+const setupSocket = (server : Server) => {
     const io = new SocketIOServer(server, {
         cors: {
             origin: process.env.ORIGIN,
@@ -35,10 +35,10 @@ const setupSocket = (server : Server) => { //TODO: Revisar codigo
         }
     }
 
-    const sendMessage = async (message: TypeMessage) => { //TODO: revisar codigo
+    const sendMessage = async (message: TypeMessage) => {
         const senderSocketId = userSocketMap.get(message.sender)
         const recipientSocketId = userSocketMap.get(message.recipient)
-
+        console.log("DESDE CONSOLA MESSAEG", message)
         const createdMessage = await Message.create(message)
         const messageData = await Message.findById(createdMessage._id)
             .populate("sender", "id email firstName lastName image color")
@@ -53,7 +53,7 @@ const setupSocket = (server : Server) => { //TODO: Revisar codigo
         }
     }
 
-    const sendChannelMessage = async (message : TypeMessage) => { //TODO: revisar codigo
+    const sendChannelMessage = async (message : TypeMessage) => {
         const { channelId, sender, content, messageType, fileUrl } = message
         console.log(message, "Envuiando mensaje");
         const createdMessage = await Message.create({

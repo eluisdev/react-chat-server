@@ -39,7 +39,7 @@ export const messageSchema : Schema = new Schema({ //TODO: Averiguar como editar
     },
     timestamp: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     }
 })
 

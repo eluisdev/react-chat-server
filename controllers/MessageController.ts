@@ -16,7 +16,7 @@ export const getMessages = async (req: Request, res: Response) => {
             return
         }
 
-        const messages = await Message.find({ //TODO: Revisar codigo
+        const messages = await Message.find({
             $or: [
                 { sender: userOne, recipient: userTwo },
                 { sender: userTwo, recipient: userOne },
@@ -32,7 +32,7 @@ export const getMessages = async (req: Request, res: Response) => {
     }
 }
 
-export const uploadFile = async (req: MulterRequest, res: Response) => {//TODO revisar codigo
+export const uploadFile = async (req: MulterRequest, res: Response) => {
     try {
         if (!req.file) {
             res.status(400).send("File is required")

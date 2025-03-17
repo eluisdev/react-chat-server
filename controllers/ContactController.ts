@@ -3,7 +3,7 @@ import {Request, Response} from "express"
 import { User } from "../models/User"
 import { Message } from "../models/Message"
 
-export const searchContacts = async (req: Request, res: Response) => { //TODO: Revisar codigo con CHATGPT
+export const searchContacts = async (req: Request, res: Response) => {
     try {
         const { searchTerm } = req.body
         if (searchTerm === undefined || searchTerm === null) {
@@ -29,7 +29,7 @@ export const searchContacts = async (req: Request, res: Response) => { //TODO: R
     }
 }
 
-export const getContactsForDMList = async (req: Request, res: Response) => { //TODO: Revisar codigo con CHATGPT
+export const getContactsForDMList = async (req: Request, res: Response) => {
     try {
         let { userId } = req
         userId = new Types.ObjectId(userId)
@@ -90,7 +90,7 @@ export const getContactsForDMList = async (req: Request, res: Response) => { //T
     }
 }
 
-export const getAllContacts = async (req: Request, res: Response) => { //TODO: Revisar codigo con CHATGPT
+export const getAllContacts = async (req: Request, res: Response) => {
     try {
         const users = await User.find(
             {_id: {$ne: req.userId}},

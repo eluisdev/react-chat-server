@@ -4,7 +4,7 @@ import { Channel } from "../models/Channel"
 import { User } from "../models/User"
 
 
-export const createChannel = async (req: Request, res: Response, next: NextFunction) => { //TODO: Revisar codigo
+export const createChannel = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { name, members } = req.body
         const userId = req.userId
@@ -38,7 +38,7 @@ export const createChannel = async (req: Request, res: Response, next: NextFunct
     }
 }
 
-export const getUserChannels = async (req: Request, res: Response, next: NextFunction) => { //TODO: Revisar codigo
+export const getUserChannels = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const userId = new Types.ObjectId(req.userId)
         const channels = await Channel.find({
@@ -53,7 +53,7 @@ export const getUserChannels = async (req: Request, res: Response, next: NextFun
     }
 }
 
-export const getChannelMessages = async (req: Request, res: Response, next: NextFunction) => { //TODO: Revisar codigo
+export const getChannelMessages = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const { channelId } = req.params
         const channel = await Channel.findById(channelId).populate({

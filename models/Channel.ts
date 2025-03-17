@@ -34,7 +34,7 @@ channelSchema.pre("save", function (next) {
     next()
 })
 
-channelSchema.pre("findOneAndUpdate", function (next) { //TODO: Revisar codigo.
+channelSchema.pre("findOneAndUpdate", function (next) {
     this.set({updatedAt : Date.now()})
     next()
 })
